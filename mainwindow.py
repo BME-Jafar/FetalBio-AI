@@ -60,7 +60,7 @@ class MainWindow(QMainWindow):
         self.pixelSizesDB = pd.concat([df1, df2], ignore_index=True)
 
 
-    def showImage(self, numpyImage, ellipse_params=None):
+    def showImage(self, numpyImage, ellipse_params=None, LOGO = False):
         """
         Displays the image in the graphics view and optionally draws an ellipse.
 
@@ -68,6 +68,7 @@ class MainWindow(QMainWindow):
         :param ellipse_params: Tuple containing ellipse parameters:
                                ((center_x, center_y), (width, height), angle)
         """
+
         # Convert the NumPy image to QImage
         height, width = numpyImage.shape
         bytes_per_line = width
@@ -75,7 +76,15 @@ class MainWindow(QMainWindow):
 
         # Convert QImage to QPixmap and display in the QGraphicsView
         pixmap = QPixmap.fromImage(qimage)
+        if LOGO:
+            scene = QGraphicsScene()
+            self.ui.logoUNIVPM.setScene(scene)
+            scene.clear()  # Clear any existing items in the scene
+            pixmap_item = scene.addPixmap(pixmap)
+            return
+
         scene = self.ui.graphicsView.scene()
+
         if scene is None:
             scene = QGraphicsScene()
             self.ui.graphicsView.setScene(scene)
@@ -84,10 +93,10 @@ class MainWindow(QMainWindow):
         pixmap_item = scene.addPixmap(pixmap)
 
         # Draw the ellipse if parameters are provided
-        if ellipse_params is not None:
-            center = ellipse_params[0]  # (center_x, center_y)
-            size = ellipse_params[1]    # (width, height)
-            angle = ellipse_params[2]   # Rotation angle
+        if self.ellipse_params is not None:
+            center = self.ellipse_params[0]  # (center_x, center_y)
+            size = self.ellipse_params[1]    # (width, height)
+            angle = self.ellipse_params[2]   # Rotation angle
 
             # Calculate the rectangle bounding the ellipse
             rect = QRectF(
@@ -278,6 +287,16 @@ class MainWindow(QMainWindow):
 
         #Reset
         self.reset()
+
+        #Set UNIVPM LOGO
+        self.LOGOscene = QGraphicsScene()
+        self.ui.logoUNIVPM.setScene(self.LOGOscene)
+        self.ui.logoUNIVPM.setStyleSheet("border: 0px")
+        try:
+            LOGO = cv2.imread("univpmLogo.png", cv2.IMREAD_GRAYSCALE)
+            self.showImage(LOGO, False, True)
+        except Exception as e:
+            print(str(e))
 
 
         # Create a QGraphicsScene and set it for the QGraphicsView
