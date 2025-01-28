@@ -141,8 +141,8 @@ class MainWindow(QMainWindow):
     def reset(self):
         self.ui.HCtextLabel.setText(f"HC: {0.00:.2f} mm")
         self.ui.GAtextLabel.setText(f"GA: {0}w {0}d")
-        self.ui.OFDtextLabel.setText(f"OFD: {0.00:.2f} [mm]")
-        self.ui.BPDtextLabel.setText(f"BPD: {0.00:.2f}")
+        self.ui.OFDtextLabel.setText(f"OFD: {0.00:.2f} mm")
+        self.ui.BPDtextLabel.setText(f"BPD: {0.00:.2f} mm")
 
     def make_prediction(self):
         self.reset()
@@ -225,10 +225,10 @@ class MainWindow(QMainWindow):
                     remaining_days_poly = 0
                 # print(f"{int(weeks)} weeks and {remaining_days:.4f} days")
 
-                self.ui.HCtextLabel.setText(f"HC: {HC:.2f} [mm]")
+                self.ui.HCtextLabel.setText(f"HC: {HC:.2f} mm")
                 self.ui.GAtextLabel.setText(f"GA: {weeks_poly}w {remaining_days_poly}d")
-                self.ui.OFDtextLabel.setText(f"OFD: {OFD:.2f} [mm]")
-                self.ui.BPDtextLabel.setText(f"BPD: {BPD:.2f} [mm]")
+                self.ui.OFDtextLabel.setText(f"OFD: {OFD:.2f} mm")
+                self.ui.BPDtextLabel.setText(f"BPD: {BPD:.2f} mm")
 
                 self.showImage(self.imageNumpy, self.ellipse_params)
                 self.ui.save_Button.setEnabled(True)
@@ -301,7 +301,7 @@ class MainWindow(QMainWindow):
         self.ui.predict_Button.clicked.connect(self.make_prediction)
         self.ui.loadImage_Button.clicked.connect(self.select_files)
         self.ui.save_Button.clicked.connect(self.savePrediction)
-        self.ui.pixelSizeText.setPlaceholderText("Pixel Size [mm]")
+        self.ui.pixelSizeText.setPlaceholderText("Pixel Size")
 
         # Validator to constrain input
         validator = QRegularExpressionValidator("[0-9.]+")

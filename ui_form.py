@@ -52,27 +52,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.ControlPanelLabel = QLabel(self.horizontalLayoutWidget)
-        self.ControlPanelLabel.setObjectName(u"ControlPanelLabel")
-        self.ControlPanelLabel.setEnabled(True)
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.ControlPanelLabel.sizePolicy().hasHeightForWidth())
-        self.ControlPanelLabel.setSizePolicy(sizePolicy2)
-        font = QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        self.ControlPanelLabel.setFont(font)
-        self.ControlPanelLabel.setScaledContents(False)
-        self.ControlPanelLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.ControlPanelLabel.setIndent(1)
-
-        self.verticalLayout.addWidget(self.ControlPanelLabel)
-
         self.Buttons = QVBoxLayout()
         self.Buttons.setSpacing(20)
         self.Buttons.setObjectName(u"Buttons")
+        self.newSub_Button = QPushButton(self.horizontalLayoutWidget)
+        self.newSub_Button.setObjectName(u"newSub_Button")
+
+        self.Buttons.addWidget(self.newSub_Button)
+
         self.loadImage_Button = QPushButton(self.horizontalLayoutWidget)
         self.loadImage_Button.setObjectName(u"loadImage_Button")
 
@@ -84,21 +71,20 @@ class Ui_MainWindow(object):
 
         self.Buttons.addWidget(self.predict_Button)
 
-        self.save_Button = QPushButton(self.horizontalLayoutWidget)
-        self.save_Button.setObjectName(u"save_Button")
-        self.save_Button.setEnabled(False)
-
-        self.Buttons.addWidget(self.save_Button)
-
-        self.exit_Button = QPushButton(self.horizontalLayoutWidget)
-        self.exit_Button.setObjectName(u"exit_Button")
-
-        self.Buttons.addWidget(self.exit_Button)
-
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.pixelSizeText = QLineEdit(self.horizontalLayoutWidget)
         self.pixelSizeText.setObjectName(u"pixelSizeText")
 
-        self.Buttons.addWidget(self.pixelSizeText)
+        self.horizontalLayout_2.addWidget(self.pixelSizeText)
+
+        self.unit = QLabel(self.horizontalLayoutWidget)
+        self.unit.setObjectName(u"unit")
+
+        self.horizontalLayout_2.addWidget(self.unit)
+
+
+        self.Buttons.addLayout(self.horizontalLayout_2)
 
 
         self.verticalLayout.addLayout(self.Buttons)
@@ -108,25 +94,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.HCtextLabel = QLabel(self.horizontalLayoutWidget)
         self.HCtextLabel.setObjectName(u"HCtextLabel")
-        font1 = QFont()
-        font1.setPointSize(10)
-        self.HCtextLabel.setFont(font1)
+        font = QFont()
+        font.setPointSize(10)
+        self.HCtextLabel.setFont(font)
         self.HCtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.HCtextLabel.setIndent(0)
 
         self.verticalLayout_5.addWidget(self.HCtextLabel)
 
-        self.GAtextLabel = QLabel(self.horizontalLayoutWidget)
-        self.GAtextLabel.setObjectName(u"GAtextLabel")
-        self.GAtextLabel.setFont(font1)
-        self.GAtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.GAtextLabel.setIndent(0)
-
-        self.verticalLayout_5.addWidget(self.GAtextLabel)
-
         self.BPDtextLabel = QLabel(self.horizontalLayoutWidget)
         self.BPDtextLabel.setObjectName(u"BPDtextLabel")
-        self.BPDtextLabel.setFont(font1)
+        self.BPDtextLabel.setFont(font)
         self.BPDtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.BPDtextLabel.setIndent(0)
 
@@ -134,11 +112,19 @@ class Ui_MainWindow(object):
 
         self.OFDtextLabel = QLabel(self.horizontalLayoutWidget)
         self.OFDtextLabel.setObjectName(u"OFDtextLabel")
-        self.OFDtextLabel.setFont(font1)
+        self.OFDtextLabel.setFont(font)
         self.OFDtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.OFDtextLabel.setIndent(0)
 
         self.verticalLayout_5.addWidget(self.OFDtextLabel)
+
+        self.GAtextLabel = QLabel(self.horizontalLayoutWidget)
+        self.GAtextLabel.setObjectName(u"GAtextLabel")
+        self.GAtextLabel.setFont(font)
+        self.GAtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.GAtextLabel.setIndent(0)
+
+        self.verticalLayout_5.addWidget(self.GAtextLabel)
 
 
         self.verticalLayout.addLayout(self.verticalLayout_5)
@@ -147,18 +133,27 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
-        self.verticalLayout.setStretch(0, 1)
-        self.verticalLayout.setStretch(1, 1)
+        self.save_Button = QPushButton(self.horizontalLayoutWidget)
+        self.save_Button.setObjectName(u"save_Button")
+        self.save_Button.setEnabled(False)
+
+        self.verticalLayout.addWidget(self.save_Button)
+
+        self.exit_Button = QPushButton(self.horizontalLayoutWidget)
+        self.exit_Button.setObjectName(u"exit_Button")
+
+        self.verticalLayout.addWidget(self.exit_Button)
+
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 
         self.graphicsView = QGraphicsView(self.horizontalLayoutWidget)
         self.graphicsView.setObjectName(u"graphicsView")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.graphicsView.sizePolicy().hasHeightForWidth())
-        self.graphicsView.setSizePolicy(sizePolicy3)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.graphicsView.sizePolicy().hasHeightForWidth())
+        self.graphicsView.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout.addWidget(self.graphicsView)
 
@@ -179,14 +174,15 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.ControlPanelLabel.setText(QCoreApplication.translate("MainWindow", u"    Control Panel", None))
+        self.newSub_Button.setText(QCoreApplication.translate("MainWindow", u"New Subject", None))
         self.loadImage_Button.setText(QCoreApplication.translate("MainWindow", u"Load Image", None))
         self.predict_Button.setText(QCoreApplication.translate("MainWindow", u"Make Predictions", None))
+        self.unit.setText(QCoreApplication.translate("MainWindow", u"mm", None))
+        self.HCtextLabel.setText(QCoreApplication.translate("MainWindow", u"HC: mm", None))
+        self.BPDtextLabel.setText(QCoreApplication.translate("MainWindow", u"BPD: mm", None))
+        self.OFDtextLabel.setText(QCoreApplication.translate("MainWindow", u"OFD: mm", None))
+        self.GAtextLabel.setText(QCoreApplication.translate("MainWindow", u"PGA: W; D", None))
         self.save_Button.setText(QCoreApplication.translate("MainWindow", u"Save Pridections", None))
         self.exit_Button.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
-        self.HCtextLabel.setText(QCoreApplication.translate("MainWindow", u"HC: [mm]", None))
-        self.GAtextLabel.setText(QCoreApplication.translate("MainWindow", u"GA: W; D", None))
-        self.BPDtextLabel.setText(QCoreApplication.translate("MainWindow", u"BPD: [mm]", None))
-        self.OFDtextLabel.setText(QCoreApplication.translate("MainWindow", u"OFD: [mm]", None))
     # retranslateUi
 

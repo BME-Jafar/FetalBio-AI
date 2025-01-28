@@ -76,45 +76,24 @@
       <number>0</number>
      </property>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,0,0">
-       <item>
-        <widget class="QLabel" name="ControlPanelLabel">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>    Control Panel</string>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-         <property name="indent">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
        <item>
         <layout class="QVBoxLayout" name="Buttons">
          <property name="spacing">
           <number>20</number>
          </property>
          <item>
+          <widget class="QPushButton" name="newSub_Button">
+           <property name="text">
+            <string>New Subject</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="loadImage_Button">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Load Image</string>
            </property>
@@ -126,29 +105,23 @@
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Make Predictions</string>
+            <string>Make Prediction</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="save_Button">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Save Pridections</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="exit_Button">
-           <property name="text">
-            <string>Exit</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="pixelSizeText"/>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLineEdit" name="pixelSizeText"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="unit">
+             <property name="text">
+              <string>mm</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -165,25 +138,7 @@
             </font>
            </property>
            <property name="text">
-            <string>HC: [mm]</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignCenter</set>
-           </property>
-           <property name="indent">
-            <number>0</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="GAtextLabel">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>GA: W; D</string>
+            <string>HC: mm</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -201,7 +156,7 @@
             </font>
            </property>
            <property name="text">
-            <string>BPD: [mm]</string>
+            <string>BPD: mm</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -219,7 +174,25 @@
             </font>
            </property>
            <property name="text">
-            <string>OFD: [mm]</string>
+            <string>OFD: mm</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="GAtextLabel">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>PGA: W; D</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -243,6 +216,23 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="save_Button">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Save Prediction</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="exit_Button">
+         <property name="text">
+          <string>Exit</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
