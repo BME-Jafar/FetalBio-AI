@@ -1,0 +1,7 @@
+PySide6
+opencv-python
+numpy
+pandas
+PIL
+scikit-image
+tensorflow==2.13.1
