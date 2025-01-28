@@ -20,7 +20,7 @@ import pydicom
 from tensorflow.keras.models import load_model
 
 from pydicom.pixel_data_handlers.util import convert_color_space
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog,  QGraphicsScene, QGraphicsEllipseItem
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog,  QGraphicsScene, QGraphicsEllipseItem,QWidget
 from PySide6.QtGui import QRegularExpressionValidator ,QIcon, QPixmap, QImage, QPen, QColor
 from PySide6.QtCore import QRectF, Qt
 
@@ -29,6 +29,7 @@ from PySide6.QtCore import QRectF, Qt
 #     pyside6-uic form.ui -o ui_form.py, or
 #     pyside2-uic form.ui -o ui_form.py
 from ui_form import Ui_MainWindow
+from info import Ui_Form
 
 def set_dark_theme():
     app.setStyleSheet("""
@@ -273,6 +274,7 @@ class MainWindow(QMainWindow):
 
 
     def __init__(self, parent=None):
+        self.infoWindow = None
         self.modelFlag = False
         self.imageNumpy = np.array([])
         self.pixelSize = 0
@@ -325,9 +327,23 @@ class MainWindow(QMainWindow):
         # Validator to constrain input
         validator = QRegularExpressionValidator("[0-9.]+")
         self.ui.pixelSizeText.setValidator(validator)
+        self.show_new_window()
+
+    def show_new_window(self):
+        if not self.infoWindow or not self.infoWindow.isVisible():
+            self.infoWindow = AnotherWindow()  # Store the instance in an attribute
+            self.infoWindow.show()
 
 
-
+class AnotherWindow(QWidget):
+    """
+    This "window" is a QWidget. If it has no parent, it
+    will appear as a free-floating window as we want.
+    """
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

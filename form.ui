@@ -56,12 +56,61 @@
       <x>20</x>
       <y>0</y>
       <width>1061</width>
-      <height>685</height>
+      <height>691</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0">
      <item>
-      <layout class="QHBoxLayout" name="PatientLayout"/>
+      <layout class="QHBoxLayout" name="PatientLayout">
+       <item>
+        <widget class="QLabel" name="IDtext">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Subject ID:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="MOTHERAGEtext">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Mother's Age:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="GAtext">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>GA:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="EDAtext">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>EDA:</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
