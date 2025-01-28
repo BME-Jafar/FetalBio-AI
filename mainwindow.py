@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import pandas as pd
 import math
+import re
 from PIL import Image
 
 from skimage.transform import resize
@@ -20,9 +21,9 @@ import pydicom
 from tensorflow.keras.models import load_model
 
 from pydicom.pixel_data_handlers.util import convert_color_space
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog,  QGraphicsScene, QGraphicsEllipseItem,QWidget
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog,  QGraphicsScene, QGraphicsEllipseItem, QWidget, QMessageBox
 from PySide6.QtGui import QRegularExpressionValidator ,QIcon, QPixmap, QImage, QPen, QColor
-from PySide6.QtCore import QRectF, Qt
+from PySide6.QtCore import QRectF, Qt, Signal
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -248,18 +249,20 @@ class MainWindow(QMainWindow):
             print("Error making prediction:", str(e))
 
     def savePrediction(self):
+        match = re.search(r"([a-zA-Z]+):\s([\d.]+)", text)
+
         HC = self.ui.HCtextLabel.text()
         GA = self.ui.GAtextLabel.text()
         OFD = self.ui.OFDtextLabel.text()
         BPD = self.ui.BPDtextLabel.text()
 
-        # Example dictionary
         data = {
             "HC": HC,
-            "GA": GA,
+            "PGA": GA,
             "OFD": OFD,
             "BPD": BPD
         }
+        data.update(self.metaData)
         # Save the dictionary as a text file
         with open(self.fileName + "_metaData.txt", "w") as file:
             for key, value in data.items():
@@ -282,6 +285,7 @@ class MainWindow(QMainWindow):
         self.pixelSizesDB = pd.DataFrame()
         self.fileName = None
         self.ellipse_params = None
+        self.metaData = None
 
         super().__init__(parent)
         self.ui = Ui_MainWindow()
@@ -322,28 +326,157 @@ class MainWindow(QMainWindow):
         self.ui.predict_Button.clicked.connect(self.make_prediction)
         self.ui.loadImage_Button.clicked.connect(self.select_files)
         self.ui.save_Button.clicked.connect(self.savePrediction)
+        self.ui.newSub_Button.clicked.connect(self.newSub)
         self.ui.pixelSizeText.setPlaceholderText("Pixel Size")
 
         # Validator to constrain input
         validator = QRegularExpressionValidator("[0-9.]+")
         self.ui.pixelSizeText.setValidator(validator)
-        self.show_new_window()
+
 
     def show_new_window(self):
         if not self.infoWindow or not self.infoWindow.isVisible():
             self.infoWindow = AnotherWindow()  # Store the instance in an attribute
+
+            self.infoWindow.done_signal.connect(self.handle_done_signal)
             self.infoWindow.show()
+
+    def handle_done_signal(self, returned_value):
+        self.metaData = returned_value
+        self.setEnabled(True)
+
+        self.ui.IDtext.setText(f"Subject ID: {self.metaData['ID']}")
+        self.ui.MOTHERAGEtext.setText(f"Mother's Age: {self.metaData['Age']}")
+        self.ui.GAtext.setText(f"GA: {self.metaData['GADays']} D,  {self.metaData['GAWeeks']} W")
+        self.ui.EDDtext.setText(f"EDD: {self.metaData['EDD']}")
+
+        self.ui.loadImage_Button.setEnabled(True)
+
+
+    def newSub(self):
+        self.show_new_window()
+        self.setEnabled(False)
+
+
 
 
 class AnotherWindow(QWidget):
-    """
-    This "window" is a QWidget. If it has no parent, it
-    will appear as a free-floating window as we want.
-    """
+    done_signal = Signal(dict)
+
     def __init__(self):
+        self.metaData = None
         super().__init__()
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+
+        # Connect the textChanged signal to the BMI calculation method
+        self.ui.WeightInput.textChanged.connect(self.calculate_bmi)
+        self.ui.HeightInput.textChanged.connect(self.calculate_bmi)
+
+        self.ui.done_Button.clicked.connect(self.done)
+
+    def calculate_bmi(self):
+        """Calculate BMI based on the entered weight and height."""
+        try:
+            weight = float(self.ui.WeightInput.text())
+            height = float(self.ui.HeightInput.text())
+
+            # Make sure height is not zero to avoid division by zero error
+            if height > 0:
+                bmi = weight / ((height / 100) ** 2)  # height is assumed in cm, so divided by 100
+                self.ui.BmiInput.setText(f"{bmi:.2f}")  # Display BMI with 2 decimal places
+            else:
+                self.ui.BmiInput.clear()  # If height is invalid, clear the BMI input field
+        except ValueError:
+            # If the user inputs non-numeric values, just clear the BMI field
+            self.ui.BmiInput.clear()
+
+    def show_error_message(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setWindowTitle("Missing Fields")
+        msg.setText("Please enter all mandatory fields")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
+
+    def done(self):
+        result = {}
+        ID = self.ui.IdInput.text()
+        if ID:
+            result['ID'] = ID
+        else:
+            self.show_error_message()
+            return None
+
+        Age = self.ui.AgeInput.text()
+        if Age.isdigit():
+            result['Age'] = int(Age)
+        else:
+            self.show_error_message()
+            return None
+
+        Weight = self.ui.WeightInput.text()
+        if Weight.isdigit():
+            result['Weight'] = int(Weight)
+
+        Height = self.ui.HeightInput.text()
+        if Height.isdigit():
+            result['Height'] = int(Height)
+
+        BMI = self.ui.BmiInput.text()
+        if BMI:  # Check if BMI is not empty
+            result['BMI'] = float(BMI)  # Ensure BMI is passed as a float
+
+        Gravidity = self.ui.GravidityBox.currentText()
+        if Gravidity.lower() != "unknown":
+            result['Gravidity'] = Gravidity
+
+        Parity = self.ui.ParityBox.currentText()
+        if Parity.lower() != "unknown":
+            result['Parity'] = Parity
+
+        if self.ui.DiabetesBool.isChecked():
+            result['Diabetes'] = True
+
+        if self.ui.HypertensionBool.isChecked():
+            result['Hypertension'] = True
+
+        if self.ui.PreeclampsiaBool.isChecked():
+            result['Preeclampsia'] = True
+
+        GADays = self.ui.GaInputDays.text()
+        if GADays.isdigit():
+            result['GADays'] = int(GADays)
+        else:
+            self.show_error_message()
+            return None
+
+        GAWeeks = self.ui.GaInputWeeks.text()
+        if GAWeeks.isdigit():
+            result['GAWeeks'] = int(GAWeeks)
+        else:
+            self.show_error_message()
+            return None
+
+        sex = self.ui.sexBox.currentText()
+        if sex.lower() != "unknown":
+            result['sex'] = sex
+
+        EDD = self.ui.EDDInput.dateTime().toString(self.ui.EDDInput.displayFormat())
+        if EDD:
+            result['EDD'] = EDD
+        else:
+            self.show_error_message()
+            return None
+
+        self.setEnabled(True)
+        self.done_signal.emit(result)
+
+        # Close the second window
+        self.close()
+
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

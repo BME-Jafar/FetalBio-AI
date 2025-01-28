@@ -45,12 +45,38 @@ class Ui_MainWindow(object):
         self.centralwidget.setAutoFillBackground(True)
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 0, 1061, 685))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 0, 1061, 691))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.PatientLayout = QHBoxLayout()
         self.PatientLayout.setObjectName(u"PatientLayout")
+        self.IDtext = QLabel(self.verticalLayoutWidget)
+        self.IDtext.setObjectName(u"IDtext")
+        font = QFont()
+        font.setPointSize(10)
+        self.IDtext.setFont(font)
+
+        self.PatientLayout.addWidget(self.IDtext)
+
+        self.MOTHERAGEtext = QLabel(self.verticalLayoutWidget)
+        self.MOTHERAGEtext.setObjectName(u"MOTHERAGEtext")
+        self.MOTHERAGEtext.setFont(font)
+
+        self.PatientLayout.addWidget(self.MOTHERAGEtext)
+
+        self.GAtext = QLabel(self.verticalLayoutWidget)
+        self.GAtext.setObjectName(u"GAtext")
+        self.GAtext.setFont(font)
+
+        self.PatientLayout.addWidget(self.GAtext)
+
+        self.EDDtext = QLabel(self.verticalLayoutWidget)
+        self.EDDtext.setObjectName(u"EDDtext")
+        self.EDDtext.setFont(font)
+
+        self.PatientLayout.addWidget(self.EDDtext)
+
 
         self.verticalLayout_2.addLayout(self.PatientLayout)
 
@@ -113,8 +139,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.HCtextLabel = QLabel(self.verticalLayoutWidget)
         self.HCtextLabel.setObjectName(u"HCtextLabel")
-        font = QFont()
-        font.setPointSize(10)
         self.HCtextLabel.setFont(font)
         self.HCtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.HCtextLabel.setIndent(0)
@@ -232,6 +256,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.IDtext.setText(QCoreApplication.translate("MainWindow", u"Subject ID:", None))
+        self.MOTHERAGEtext.setText(QCoreApplication.translate("MainWindow", u"Mother's Age:", None))
+        self.GAtext.setText(QCoreApplication.translate("MainWindow", u"GA:", None))
+        self.EDDtext.setText(QCoreApplication.translate("MainWindow", u"EDD:", None))
         self.newSub_Button.setText(QCoreApplication.translate("MainWindow", u"New Subject", None))
         self.loadImage_Button.setText(QCoreApplication.translate("MainWindow", u"Load Image", None))
         self.predict_Button.setText(QCoreApplication.translate("MainWindow", u"Make Prediction", None))

@@ -124,19 +124,19 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
-           <widget class="QLineEdit" name="IDinput"/>
+           <widget class="QLineEdit" name="IdInput"/>
           </item>
           <item>
            <widget class="QLineEdit" name="AgeInput"/>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_5"/>
+           <widget class="QLineEdit" name="WeightInput"/>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_3"/>
+           <widget class="QLineEdit" name="HeightInput"/>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_2"/>
+           <widget class="QLineEdit" name="BmiInput"/>
           </item>
          </layout>
         </item>
@@ -285,21 +285,21 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="diabetesBool">
+           <widget class="QCheckBox" name="DiabetesBool">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="hypertensionBool">
+           <widget class="QCheckBox" name="HypertensionBool">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="preeclampsiaBool">
+           <widget class="QCheckBox" name="PreeclampsiaBool">
             <property name="text">
              <string/>
             </property>
@@ -345,7 +345,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="GaInputDays"/>
       </item>
       <item>
        <widget class="QLabel" name="label_15">
@@ -355,7 +355,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_4"/>
+       <widget class="QLineEdit" name="GaInputWeeks"/>
       </item>
       <item>
        <widget class="QLabel" name="label_16">
@@ -416,13 +416,24 @@
        </widget>
       </item>
       <item>
-       <widget class="QDateEdit" name="dateEdit"/>
+       <widget class="QDateEdit" name="EDDInput">
+        <property name="dateTime">
+         <datetime>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>2025</year>
+          <month>1</month>
+          <day>1</day>
+         </datetime>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="done_Button">
    <property name="geometry">
     <rect>
      <x>470</x>

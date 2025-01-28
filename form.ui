@@ -99,14 +99,14 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="EDAtext">
+        <widget class="QLabel" name="EDDtext">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>EDA:</string>
+          <string>EDD:</string>
          </property>
         </widget>
        </item>

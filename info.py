@@ -23,10 +23,10 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(626, 463)
+        Form.resize(631, 476)
         self.verticalLayoutWidget = QWidget(Form)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 20, 591, 391))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 20, 591, 403))
         self.Main = QVBoxLayout(self.verticalLayoutWidget)
         self.Main.setObjectName(u"Main")
         self.Main.setContentsMargins(0, 0, 0, 0)
@@ -35,7 +35,7 @@ class Ui_Form(object):
         font = QFont()
         font.setPointSize(20)
         self.label.setFont(font)
-        self.label.setAlignment(Qt.AlignCenter)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.Main.addWidget(self.label)
 
@@ -46,7 +46,7 @@ class Ui_Form(object):
         font1 = QFont()
         font1.setPointSize(11)
         self.label_12.setFont(font1)
-        self.label_12.setAlignment(Qt.AlignCenter)
+        self.label_12.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.motherLayout.addWidget(self.label_12)
 
@@ -91,30 +91,30 @@ class Ui_Form(object):
 
         self.verticalLayout_6 = QVBoxLayout()
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.IDinput = QLineEdit(self.verticalLayoutWidget)
-        self.IDinput.setObjectName(u"IDinput")
+        self.IdInput = QLineEdit(self.verticalLayoutWidget)
+        self.IdInput.setObjectName(u"IdInput")
 
-        self.verticalLayout_6.addWidget(self.IDinput)
+        self.verticalLayout_6.addWidget(self.IdInput)
 
         self.AgeInput = QLineEdit(self.verticalLayoutWidget)
         self.AgeInput.setObjectName(u"AgeInput")
 
         self.verticalLayout_6.addWidget(self.AgeInput)
 
-        self.lineEdit_5 = QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_5.setObjectName(u"lineEdit_5")
+        self.WeightInput = QLineEdit(self.verticalLayoutWidget)
+        self.WeightInput.setObjectName(u"WeightInput")
 
-        self.verticalLayout_6.addWidget(self.lineEdit_5)
+        self.verticalLayout_6.addWidget(self.WeightInput)
 
-        self.lineEdit_3 = QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_3.setObjectName(u"lineEdit_3")
+        self.HeightInput = QLineEdit(self.verticalLayoutWidget)
+        self.HeightInput.setObjectName(u"HeightInput")
 
-        self.verticalLayout_6.addWidget(self.lineEdit_3)
+        self.verticalLayout_6.addWidget(self.HeightInput)
 
-        self.lineEdit_2 = QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        self.BmiInput = QLineEdit(self.verticalLayoutWidget)
+        self.BmiInput.setObjectName(u"BmiInput")
 
-        self.verticalLayout_6.addWidget(self.lineEdit_2)
+        self.verticalLayout_6.addWidget(self.BmiInput)
 
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_6)
@@ -180,20 +180,20 @@ class Ui_Form(object):
 
         self.verticalLayout_8.addWidget(self.ParityBox)
 
-        self.diabetesBool = QCheckBox(self.verticalLayoutWidget)
-        self.diabetesBool.setObjectName(u"diabetesBool")
+        self.DiabetesBool = QCheckBox(self.verticalLayoutWidget)
+        self.DiabetesBool.setObjectName(u"DiabetesBool")
 
-        self.verticalLayout_8.addWidget(self.diabetesBool)
+        self.verticalLayout_8.addWidget(self.DiabetesBool)
 
-        self.hypertensionBool = QCheckBox(self.verticalLayoutWidget)
-        self.hypertensionBool.setObjectName(u"hypertensionBool")
+        self.HypertensionBool = QCheckBox(self.verticalLayoutWidget)
+        self.HypertensionBool.setObjectName(u"HypertensionBool")
 
-        self.verticalLayout_8.addWidget(self.hypertensionBool)
+        self.verticalLayout_8.addWidget(self.HypertensionBool)
 
-        self.preeclampsiaBool = QCheckBox(self.verticalLayoutWidget)
-        self.preeclampsiaBool.setObjectName(u"preeclampsiaBool")
+        self.PreeclampsiaBool = QCheckBox(self.verticalLayoutWidget)
+        self.PreeclampsiaBool.setObjectName(u"PreeclampsiaBool")
 
-        self.verticalLayout_8.addWidget(self.preeclampsiaBool)
+        self.verticalLayout_8.addWidget(self.PreeclampsiaBool)
 
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_8)
@@ -214,7 +214,7 @@ class Ui_Form(object):
         self.label_13 = QLabel(self.verticalLayoutWidget)
         self.label_13.setObjectName(u"label_13")
         self.label_13.setFont(font1)
-        self.label_13.setAlignment(Qt.AlignCenter)
+        self.label_13.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.FetusLayout.addWidget(self.label_13)
 
@@ -229,20 +229,20 @@ class Ui_Form(object):
 
         self.horizontalLayout_3.addWidget(self.label_14)
 
-        self.lineEdit = QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.GaInputDays = QLineEdit(self.verticalLayoutWidget)
+        self.GaInputDays.setObjectName(u"GaInputDays")
 
-        self.horizontalLayout_3.addWidget(self.lineEdit)
+        self.horizontalLayout_3.addWidget(self.GaInputDays)
 
         self.label_15 = QLabel(self.verticalLayoutWidget)
         self.label_15.setObjectName(u"label_15")
 
         self.horizontalLayout_3.addWidget(self.label_15)
 
-        self.lineEdit_4 = QLineEdit(self.verticalLayoutWidget)
-        self.lineEdit_4.setObjectName(u"lineEdit_4")
+        self.GaInputWeeks = QLineEdit(self.verticalLayoutWidget)
+        self.GaInputWeeks.setObjectName(u"GaInputWeeks")
 
-        self.horizontalLayout_3.addWidget(self.lineEdit_4)
+        self.horizontalLayout_3.addWidget(self.GaInputWeeks)
 
         self.label_16 = QLabel(self.verticalLayoutWidget)
         self.label_16.setObjectName(u"label_16")
@@ -279,20 +279,21 @@ class Ui_Form(object):
 
         self.horizontalLayout_6.addWidget(self.label_18)
 
-        self.dateEdit = QDateEdit(self.verticalLayoutWidget)
-        self.dateEdit.setObjectName(u"dateEdit")
+        self.EDDInput = QDateEdit(self.verticalLayoutWidget)
+        self.EDDInput.setObjectName(u"EDDInput")
+        self.EDDInput.setDateTime(QDateTime(QDate(2025, 1, 1), QTime(0, 0, 0)))
 
-        self.horizontalLayout_6.addWidget(self.dateEdit)
+        self.horizontalLayout_6.addWidget(self.EDDInput)
 
 
         self.Main.addLayout(self.horizontalLayout_6)
 
-        self.pushButton = QPushButton(Form)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(470, 420, 141, 31))
+        self.done_Button = QPushButton(Form)
+        self.done_Button.setObjectName(u"done_Button")
+        self.done_Button.setGeometry(QRect(470, 430, 141, 31))
         self.label_19 = QLabel(Form)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setGeometry(QRect(20, 420, 171, 21))
+        self.label_19.setGeometry(QRect(20, 440, 171, 21))
 
         self.retranslateUi(Form)
 
@@ -329,9 +330,9 @@ class Ui_Form(object):
         self.ParityBox.setItemText(5, QCoreApplication.translate("Form", u"5", None))
         self.ParityBox.setItemText(6, QCoreApplication.translate("Form", u">5", None))
 
-        self.diabetesBool.setText("")
-        self.hypertensionBool.setText("")
-        self.preeclampsiaBool.setText("")
+        self.DiabetesBool.setText("")
+        self.HypertensionBool.setText("")
+        self.PreeclampsiaBool.setText("")
         self.label_13.setText(QCoreApplication.translate("Form", u"Fetus's Information", None))
         self.label_14.setText(QCoreApplication.translate("Form", u"GA*", None))
         self.label_15.setText(QCoreApplication.translate("Form", u"D", None))
@@ -342,7 +343,7 @@ class Ui_Form(object):
         self.sexBox.setItemText(2, QCoreApplication.translate("Form", u"Female", None))
 
         self.label_18.setText(QCoreApplication.translate("Form", u"EDD*: ", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"Done", None))
+        self.done_Button.setText(QCoreApplication.translate("Form", u"Done", None))
         self.label_19.setText(QCoreApplication.translate("Form", u"Feilds with * are mandatory.", None))
     # retranslateUi
 
