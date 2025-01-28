@@ -137,7 +137,7 @@ class MainWindow(QMainWindow):
                 filtered_df = self.pixelSizesDB[self.pixelSizesDB['filename'] == self.fileName]
                 if not filtered_df.empty:
                     pixel_size = filtered_df.loc[:, 'pixel size(mm)'].iloc[0]
-                    self.ui.pixelSizeText.setText(str(pixel_size))
+                    self.ui.pixelSizeText.setText(str(f"{pixel_size:.3f}"))
 
     def load_the_network(self):
         try:
