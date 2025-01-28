@@ -133,6 +133,7 @@ class MainWindow(QMainWindow):
     def load_the_network(self):
         try:
             self.model = load_model("network.h5", compile=False)
+            self.modelFlag = True
         except:
             self.modelFlag = False
             print("NO MODEL IS LOADED!")
@@ -223,16 +224,6 @@ class MainWindow(QMainWindow):
                     weeks_poly = 0
                     remaining_days_poly = 0
                 # print(f"{int(weeks)} weeks and {remaining_days:.4f} days")
-
-                # Use the chitty equation to estimate gestational age
-                log_ga = 0.010611 * HC - 0.000030321 * HC**2 + (0.43498 * 10**-7) * HC**3 + 1.848
-                ga = math.exp(log_ga)
-                if pixel_size_value != 0:
-                    weeks = int(ga)
-                    days = round((ga - weeks) * 7)
-                else:
-                    weeks = 0
-                    days = 0
 
                 self.ui.HCtextLabel.setText(f"HC: {HC:.2f} [mm]")
                 self.ui.GAtextLabel.setText(f"GA: {weeks_poly}w {remaining_days_poly}d")
