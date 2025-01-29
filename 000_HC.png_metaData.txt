@@ -1,9 +1,0 @@
-HC: HC: 44.58 mm
-GA: GA: 11w 6d
-OFD: OFD: 15.43 mm
-BPD: BPD: 12.94 mm
-Age: 12
-EDD: 31/12/2024
-GADays: 13
-GAWeeks: 13
-ID: AA
