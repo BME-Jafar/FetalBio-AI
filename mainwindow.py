@@ -409,7 +409,7 @@ class MainWindow(QMainWindow):
 
         self.ui.IDtext.setText(f"Subject ID: {self.metaData['ID']}")
         self.ui.MOTHERAGEtext.setText(f"Mother's Age: {self.metaData['Age']}")
-        self.ui.GAtext.setText(f"GA: {self.metaData['GADays']} D,  {self.metaData['GAWeeks']} W")
+        self.ui.GAtext.setText(f"GA: {self.metaData['GAWeeks']} W, {self.metaData['GADays']} D")
         self.ui.EDDtext.setText(f"EDD: {self.metaData['EDD']}")
 
         self.ui.loadImage_Button.setEnabled(True)
