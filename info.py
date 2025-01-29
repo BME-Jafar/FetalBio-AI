@@ -17,16 +17,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateEdit,
     QHBoxLayout, QLabel, QLineEdit, QPushButton,
-    QSizePolicy, QVBoxLayout, QWidget)
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(631, 476)
+        Form.resize(630, 491)
         self.verticalLayoutWidget = QWidget(Form)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 20, 591, 403))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 20, 591, 410))
         self.Main = QVBoxLayout(self.verticalLayoutWidget)
         self.Main.setObjectName(u"Main")
         self.Main.setContentsMargins(0, 0, 0, 0)
@@ -218,9 +218,6 @@ class Ui_Form(object):
 
         self.FetusLayout.addWidget(self.label_13)
 
-
-        self.Main.addLayout(self.FetusLayout)
-
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.label_14 = QLabel(self.verticalLayoutWidget)
@@ -228,6 +225,10 @@ class Ui_Form(object):
         self.label_14.setFont(font2)
 
         self.horizontalLayout_3.addWidget(self.label_14)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer)
 
         self.GaInputDays = QLineEdit(self.verticalLayoutWidget)
         self.GaInputDays.setObjectName(u"GaInputDays")
@@ -238,6 +239,10 @@ class Ui_Form(object):
         self.label_15.setObjectName(u"label_15")
 
         self.horizontalLayout_3.addWidget(self.label_15)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
 
         self.GaInputWeeks = QLineEdit(self.verticalLayoutWidget)
         self.GaInputWeeks.setObjectName(u"GaInputWeeks")
@@ -250,7 +255,24 @@ class Ui_Form(object):
         self.horizontalLayout_3.addWidget(self.label_16)
 
 
-        self.Main.addLayout(self.horizontalLayout_3)
+        self.FetusLayout.addLayout(self.horizontalLayout_3)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.label_18 = QLabel(self.verticalLayoutWidget)
+        self.label_18.setObjectName(u"label_18")
+        self.label_18.setFont(font2)
+
+        self.horizontalLayout_6.addWidget(self.label_18)
+
+        self.EDDInput = QDateEdit(self.verticalLayoutWidget)
+        self.EDDInput.setObjectName(u"EDDInput")
+        self.EDDInput.setDateTime(QDateTime(QDate(2024, 12, 31), QTime(23, 0, 0)))
+
+        self.horizontalLayout_6.addWidget(self.EDDInput)
+
+
+        self.FetusLayout.addLayout(self.horizontalLayout_6)
 
         self.sexLayout = QHBoxLayout()
         self.sexLayout.setObjectName(u"sexLayout")
@@ -269,31 +291,22 @@ class Ui_Form(object):
         self.sexLayout.addWidget(self.sexBox)
 
 
-        self.Main.addLayout(self.sexLayout)
-
-        self.horizontalLayout_6 = QHBoxLayout()
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.label_18 = QLabel(self.verticalLayoutWidget)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font2)
-
-        self.horizontalLayout_6.addWidget(self.label_18)
-
-        self.EDDInput = QDateEdit(self.verticalLayoutWidget)
-        self.EDDInput.setObjectName(u"EDDInput")
-        self.EDDInput.setDateTime(QDateTime(QDate(2025, 1, 1), QTime(0, 0, 0)))
-
-        self.horizontalLayout_6.addWidget(self.EDDInput)
+        self.FetusLayout.addLayout(self.sexLayout)
 
 
-        self.Main.addLayout(self.horizontalLayout_6)
+        self.Main.addLayout(self.FetusLayout)
 
+        self.Main.setStretch(1, 1)
+        self.Main.setStretch(2, 1)
         self.done_Button = QPushButton(Form)
         self.done_Button.setObjectName(u"done_Button")
-        self.done_Button.setGeometry(QRect(470, 430, 141, 31))
+        self.done_Button.setGeometry(QRect(470, 450, 141, 31))
         self.label_19 = QLabel(Form)
         self.label_19.setObjectName(u"label_19")
-        self.label_19.setGeometry(QRect(20, 440, 171, 21))
+        self.label_19.setGeometry(QRect(20, 450, 191, 21))
+        self.cancel_button = QPushButton(Form)
+        self.cancel_button.setObjectName(u"cancel_button")
+        self.cancel_button.setGeometry(QRect(320, 450, 141, 31))
 
         self.retranslateUi(Form)
 
@@ -303,7 +316,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.label.setText(QCoreApplication.translate("Form", u"Please enter the following information", None))
-        self.label_12.setText(QCoreApplication.translate("Form", u"Mother's Inoformation", None))
+        self.label_12.setText(QCoreApplication.translate("Form", u"Mother's Information", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"ID *", None))
         self.label_6.setText(QCoreApplication.translate("Form", u"Age * ", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"Weight (Kg)", None))
@@ -337,13 +350,14 @@ class Ui_Form(object):
         self.label_14.setText(QCoreApplication.translate("Form", u"GA*", None))
         self.label_15.setText(QCoreApplication.translate("Form", u"D", None))
         self.label_16.setText(QCoreApplication.translate("Form", u"W", None))
+        self.label_18.setText(QCoreApplication.translate("Form", u"EDD*: ", None))
         self.label_17.setText(QCoreApplication.translate("Form", u"Sex", None))
         self.sexBox.setItemText(0, QCoreApplication.translate("Form", u"Unknown", None))
         self.sexBox.setItemText(1, QCoreApplication.translate("Form", u"Male", None))
         self.sexBox.setItemText(2, QCoreApplication.translate("Form", u"Female", None))
 
-        self.label_18.setText(QCoreApplication.translate("Form", u"EDD*: ", None))
         self.done_Button.setText(QCoreApplication.translate("Form", u"Done", None))
         self.label_19.setText(QCoreApplication.translate("Form", u"Feilds with * are mandatory.", None))
+        self.cancel_button.setText(QCoreApplication.translate("Form", u"Cancel", None))
     # retranslateUi
 

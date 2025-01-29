@@ -126,7 +126,33 @@ class MainWindow(QMainWindow):
         file_path, _ = QFileDialog.getOpenFileName(self, "Select image file (PNG or DCM)", "", filters, options=options)
         if file_path:
             if (os.path.basename(file_path)[-3:].lower() == "dcm"): #Dicom Files
-                print("TO DO")
+                self.fileName = os.path.basename(file_path)
+                # Load the DICOM file
+                ds = pydicom.dcmread(file_path)
+                # Extract image data
+                self.imageNumpy = ds.pixel_array
+                self.showImage(self.imageNumpy)
+                if self.modelFlag:
+                    self.ui.predict_Button.setEnabled(True)
+                    self.ui.save_Button.setEnabled(False)
+                    if 'PixelSpacing' in ds:  # (0028,0030)
+                        pixel_size = ds.PixelSpacing[0]*ds.PixelSpacing[1]  # [row spacing, column spacing] in mm
+                        print(f"Pixel Spacing (0028,0030): {pixel_size} mm")
+
+                    elif 'ImagerPixelSpacing' in ds:  # (0018,1164)
+                        pixel_size = ds.ImagerPixelSpacing[0] * ds.ImagerPixelSpacing[1]  # [row spacing, column spacing] in mm
+                        print(f"Imager Pixel Spacing (0018,1164): {pixel_size} mm")
+
+                    elif hasattr(ds, 'SequenceOfUltrasoundRegions') and ds.SequenceOfUltrasoundRegions:
+                        # Ultrasound calibration regions
+                        for region in ds.SequenceOfUltrasoundRegions:
+                            if hasattr(region, 'PhysicalDeltaX') and hasattr(region, 'PhysicalDeltaY'):
+                                pixel_size = region.PhysicalDeltaY* region.PhysicalDeltaX  # [row spacing, column spacing]
+                                self.ui.pixelSizeText.setText(str(f"{pixel_size:.3f}"))
+                                break  # Use first valid region
+                    #else:
+                        #print("No pixel size information available in this DICOM file.")
+
             else: #PNG
                 self.fileName = os.path.basename(file_path)
                 self.imageNumpy = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
@@ -249,12 +275,17 @@ class MainWindow(QMainWindow):
             print("Error making prediction:", str(e))
 
     def savePrediction(self):
-        match = re.search(r"([a-zA-Z]+):\s([\d.]+)", text)
 
         HC = self.ui.HCtextLabel.text()
         GA = self.ui.GAtextLabel.text()
         OFD = self.ui.OFDtextLabel.text()
         BPD = self.ui.BPDtextLabel.text()
+
+        # Clean the input strings to remove unnecessary prefixes
+        HC = HC.replace("HC: ", "")
+        GA = GA.replace("GA: ", "")
+        OFD = OFD.replace("OFD: ", "")
+        BPD = BPD.replace("BPD: ", "")
 
         data = {
             "HC": HC,
@@ -310,7 +341,7 @@ class MainWindow(QMainWindow):
         self.ui.graphicsView.setScene(self.scene)
 
         # Set the window title
-        self.setWindowTitle("Automatic Fetal Head Biometry Estimation - Br3in UNIVPM")
+        self.setWindowTitle("FetalBio-AI - Br3in UNIVPM")
 
         # Set window icon
         self.setWindowIcon(QIcon('3.png'))
@@ -339,6 +370,7 @@ class MainWindow(QMainWindow):
             self.infoWindow = AnotherWindow()  # Store the instance in an attribute
 
             self.infoWindow.done_signal.connect(self.handle_done_signal)
+            self.infoWindow.cancel_signal.connect(self.handle_cancel_signal)
             self.infoWindow.show()
 
     def handle_done_signal(self, returned_value):
@@ -357,11 +389,12 @@ class MainWindow(QMainWindow):
         self.show_new_window()
         self.setEnabled(False)
 
-
-
+    def handle_cancel_signal(self, returned_value):
+        self.setEnabled(True)
 
 class AnotherWindow(QWidget):
     done_signal = Signal(dict)
+    cancel_signal = Signal(bool)
 
     def __init__(self):
         self.metaData = None
@@ -369,11 +402,18 @@ class AnotherWindow(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
+        # Set the window title
+        self.setWindowTitle("Mother & Fetus Information")
+
+        # Set window icon
+        self.setWindowIcon(QIcon('3.png'))
+
         # Connect the textChanged signal to the BMI calculation method
         self.ui.WeightInput.textChanged.connect(self.calculate_bmi)
         self.ui.HeightInput.textChanged.connect(self.calculate_bmi)
 
         self.ui.done_Button.clicked.connect(self.done)
+        self.ui.cancel_button.clicked.connect(self.cancel)
 
     def calculate_bmi(self):
         """Calculate BMI based on the entered weight and height."""
@@ -437,12 +477,19 @@ class AnotherWindow(QWidget):
 
         if self.ui.DiabetesBool.isChecked():
             result['Diabetes'] = True
+        else:
+            result['Diabetes'] = False
 
         if self.ui.HypertensionBool.isChecked():
             result['Hypertension'] = True
+        else:
+            result['Hypertension'] = False
+
 
         if self.ui.PreeclampsiaBool.isChecked():
             result['Preeclampsia'] = True
+        else:
+            result['Preeclampsia'] = False
 
         GADays = self.ui.GaInputDays.text()
         if GADays.isdigit():
@@ -474,6 +521,11 @@ class AnotherWindow(QWidget):
 
         # Close the second window
         self.close()
+
+    def cancel(self):
+        self.cancel_signal.emit(False)
+        self.close()
+
 
 
 
