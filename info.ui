@@ -79,7 +79,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Age * </string>
+             <string>Age (Y) * </string>
             </property>
            </widget>
           </item>
@@ -115,7 +115,7 @@
              </font>
             </property>
             <property name="text">
-             <string>BMI</string>
+             <string>BMI (Kg/cm2)</string>
             </property>
            </widget>
           </item>
@@ -408,7 +408,7 @@
          <widget class="QDateEdit" name="EDDInput">
           <property name="dateTime">
            <datetime>
-            <hour>23</hour>
+            <hour>22</hour>
             <minute>0</minute>
             <second>0</second>
             <year>2024</year>

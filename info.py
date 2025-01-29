@@ -267,7 +267,7 @@ class Ui_Form(object):
 
         self.EDDInput = QDateEdit(self.verticalLayoutWidget)
         self.EDDInput.setObjectName(u"EDDInput")
-        self.EDDInput.setDateTime(QDateTime(QDate(2024, 12, 31), QTime(23, 0, 0)))
+        self.EDDInput.setDateTime(QDateTime(QDate(2024, 12, 31), QTime(22, 0, 0)))
 
         self.horizontalLayout_6.addWidget(self.EDDInput)
 
@@ -318,10 +318,10 @@ class Ui_Form(object):
         self.label.setText(QCoreApplication.translate("Form", u"Please enter the following information", None))
         self.label_12.setText(QCoreApplication.translate("Form", u"Mother's Information", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"ID *", None))
-        self.label_6.setText(QCoreApplication.translate("Form", u"Age * ", None))
+        self.label_6.setText(QCoreApplication.translate("Form", u"Age (Y) * ", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"Weight (Kg)", None))
         self.label_5.setText(QCoreApplication.translate("Form", u"Height (cm)", None))
-        self.label_2.setText(QCoreApplication.translate("Form", u"BMI", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"BMI (Kg/cm2)", None))
         self.label_7.setText(QCoreApplication.translate("Form", u"Gravidity", None))
         self.label_8.setText(QCoreApplication.translate("Form", u"Parity", None))
         self.label_9.setText(QCoreApplication.translate("Form", u"Diabetes", None))

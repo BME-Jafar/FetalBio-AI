@@ -185,7 +185,7 @@ class MainWindow(QMainWindow):
 
     def reset(self):
         self.ui.HCtextLabel.setText(f"HC: {0.00:.2f}")
-        self.ui.GAtextLabel.setText(f"GA: {0}w {0}d")
+        self.ui.GAtextLabel.setText(f"PGA: {0}w {0}d")
         self.ui.OFDtextLabel.setText(f"OFD: {0.00:.2f}")
         self.ui.BPDtextLabel.setText(f"BPD: {0.00:.2f}")
 
@@ -271,7 +271,7 @@ class MainWindow(QMainWindow):
                 # print(f"{int(weeks)} weeks and {remaining_days:.4f} days")
 
                 self.ui.HCtextLabel.setText(f"HC: {HC:.2f} mm")
-                self.ui.GAtextLabel.setText(f"GA: {weeks_poly}w {remaining_days_poly}d")
+                self.ui.GAtextLabel.setText(f"PGA: {weeks_poly}w {remaining_days_poly}d")
                 self.ui.OFDtextLabel.setText(f"OFD: {OFD:.2f} mm")
                 self.ui.BPDtextLabel.setText(f"BPD: {BPD:.2f} mm")
 
