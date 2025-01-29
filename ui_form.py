@@ -247,10 +247,6 @@ class Ui_MainWindow(object):
 
         self.contactUs_Layout = QHBoxLayout()
         self.contactUs_Layout.setObjectName(u"contactUs_Layout")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.contactUs_Layout.addItem(self.horizontalSpacer)
-
         self.Br3inLOGO = QGraphicsView(self.verticalLayoutWidget)
         self.Br3inLOGO.setObjectName(u"Br3inLOGO")
         sizePolicy.setHeightForWidth(self.Br3inLOGO.sizePolicy().hasHeightForWidth())
@@ -274,26 +270,52 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.label_5 = QLabel(self.verticalLayoutWidget)
+        self.label_5.setObjectName(u"label_5")
+
+        self.verticalLayout_3.addWidget(self.label_5)
+
+        self.label_6 = QLabel(self.verticalLayoutWidget)
+        self.label_6.setObjectName(u"label_6")
+
+        self.verticalLayout_3.addWidget(self.label_6)
+
         self.label = QLabel(self.verticalLayoutWidget)
         self.label.setObjectName(u"label")
         font2 = QFont()
         font2.setFamilies([u"Times New Roman"])
         font2.setPointSize(10)
         self.label.setFont(font2)
+        self.label.setMargin(0)
+        self.label.setIndent(0)
 
         self.verticalLayout_3.addWidget(self.label)
 
         self.label_2 = QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setFont(font2)
+        self.label_2.setMargin(0)
+        self.label_2.setIndent(0)
 
         self.verticalLayout_3.addWidget(self.label_2)
 
         self.label_3 = QLabel(self.verticalLayoutWidget)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setFont(font2)
+        self.label_3.setMargin(0)
+        self.label_3.setIndent(0)
 
         self.verticalLayout_3.addWidget(self.label_3)
+
+        self.label_7 = QLabel(self.verticalLayoutWidget)
+        self.label_7.setObjectName(u"label_7")
+
+        self.verticalLayout_3.addWidget(self.label_7)
+
+        self.label_4 = QLabel(self.verticalLayoutWidget)
+        self.label_4.setObjectName(u"label_4")
+
+        self.verticalLayout_3.addWidget(self.label_4)
 
 
         self.contactUs_Layout.addLayout(self.verticalLayout_3)
@@ -335,8 +357,12 @@ class Ui_MainWindow(object):
         self.GAtextLabel_5.setText("")
         self.save_Button.setText(QCoreApplication.translate("MainWindow", u"Save Prediction", None))
         self.exit_Button.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
+        self.label_5.setText("")
+        self.label_6.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"Contact Us:", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Prof. Laura Burattini", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"l.burattini@univpm.it", None))
+        self.label_7.setText("")
+        self.label_4.setText("")
     # retranslateUi
 

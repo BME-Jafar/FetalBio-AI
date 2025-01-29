@@ -418,19 +418,6 @@
      <item>
       <layout class="QHBoxLayout" name="contactUs_Layout">
        <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <widget class="QGraphicsView" name="Br3inLOGO">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -463,6 +450,20 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QLabel" name="label">
            <property name="font">
             <font>
@@ -472,6 +473,12 @@
            </property>
            <property name="text">
             <string>Contact Us:</string>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
            </property>
           </widget>
          </item>
@@ -486,6 +493,12 @@
            <property name="text">
             <string>Prof. Laura Burattini</string>
            </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
           </widget>
          </item>
          <item>
@@ -498,6 +511,26 @@
            </property>
            <property name="text">
             <string>l.burattini@univpm.it</string>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
