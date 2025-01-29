@@ -4,3 +4,5 @@
 AutoFetalHeadBiometryEstimation.pyproject.user
 AutoFetalHeadBiometryEstimation.pyproject
 *TMP
+__pycache__/info.cpython-311.pyc
+__pycache__/ui_form.cpython-311.pyc

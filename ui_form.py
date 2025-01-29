@@ -24,8 +24,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1095, 893)
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
+        MainWindow.resize(1095, 889)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
@@ -253,25 +253,22 @@ class Ui_MainWindow(object):
 
         self.Br3inLOGO = QGraphicsView(self.verticalLayoutWidget)
         self.Br3inLOGO.setObjectName(u"Br3inLOGO")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.Br3inLOGO.sizePolicy().hasHeightForWidth())
-        self.Br3inLOGO.setSizePolicy(sizePolicy3)
+        sizePolicy.setHeightForWidth(self.Br3inLOGO.sizePolicy().hasHeightForWidth())
+        self.Br3inLOGO.setSizePolicy(sizePolicy)
 
         self.contactUs_Layout.addWidget(self.Br3inLOGO)
 
         self.DIILOGO = QGraphicsView(self.verticalLayoutWidget)
         self.DIILOGO.setObjectName(u"DIILOGO")
-        sizePolicy3.setHeightForWidth(self.DIILOGO.sizePolicy().hasHeightForWidth())
-        self.DIILOGO.setSizePolicy(sizePolicy3)
+        sizePolicy.setHeightForWidth(self.DIILOGO.sizePolicy().hasHeightForWidth())
+        self.DIILOGO.setSizePolicy(sizePolicy)
 
         self.contactUs_Layout.addWidget(self.DIILOGO)
 
         self.logoUNIVPM = QGraphicsView(self.verticalLayoutWidget)
         self.logoUNIVPM.setObjectName(u"logoUNIVPM")
-        sizePolicy3.setHeightForWidth(self.logoUNIVPM.sizePolicy().hasHeightForWidth())
-        self.logoUNIVPM.setSizePolicy(sizePolicy3)
+        sizePolicy.setHeightForWidth(self.logoUNIVPM.sizePolicy().hasHeightForWidth())
+        self.logoUNIVPM.setSizePolicy(sizePolicy)
 
         self.contactUs_Layout.addWidget(self.logoUNIVPM)
 
