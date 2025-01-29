@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1095, 735)
+        MainWindow.resize(1095, 893)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setAutoFillBackground(True)
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(20, 0, 1061, 691))
+        self.verticalLayoutWidget.setGeometry(QRect(20, 0, 1061, 839))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -54,7 +54,7 @@ class Ui_MainWindow(object):
         self.IDtext = QLabel(self.verticalLayoutWidget)
         self.IDtext.setObjectName(u"IDtext")
         font = QFont()
-        font.setPointSize(10)
+        font.setPointSize(12)
         self.IDtext.setFont(font)
 
         self.PatientLayout.addWidget(self.IDtext)
@@ -80,39 +80,34 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.PatientLayout)
 
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.Workspace_Layout = QHBoxLayout()
+        self.Workspace_Layout.setObjectName(u"Workspace_Layout")
+        self.Workspace_Layout.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
+        self.Workspace_Layout.setContentsMargins(0, 0, 0, 0)
+        self.ControlPnael_Layout = QVBoxLayout()
+        self.ControlPnael_Layout.setObjectName(u"ControlPnael_Layout")
         self.Buttons = QVBoxLayout()
         self.Buttons.setSpacing(20)
         self.Buttons.setObjectName(u"Buttons")
-        self.logoUNIVPM = QGraphicsView(self.verticalLayoutWidget)
-        self.logoUNIVPM.setObjectName(u"logoUNIVPM")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.logoUNIVPM.sizePolicy().hasHeightForWidth())
-        self.logoUNIVPM.setSizePolicy(sizePolicy2)
-
-        self.Buttons.addWidget(self.logoUNIVPM)
-
         self.newSub_Button = QPushButton(self.verticalLayoutWidget)
         self.newSub_Button.setObjectName(u"newSub_Button")
+        font1 = QFont()
+        font1.setPointSize(11)
+        self.newSub_Button.setFont(font1)
 
         self.Buttons.addWidget(self.newSub_Button)
 
         self.loadImage_Button = QPushButton(self.verticalLayoutWidget)
         self.loadImage_Button.setObjectName(u"loadImage_Button")
         self.loadImage_Button.setEnabled(False)
+        self.loadImage_Button.setFont(font1)
 
         self.Buttons.addWidget(self.loadImage_Button)
 
         self.predict_Button = QPushButton(self.verticalLayoutWidget)
         self.predict_Button.setObjectName(u"predict_Button")
         self.predict_Button.setEnabled(False)
+        self.predict_Button.setFont(font1)
 
         self.Buttons.addWidget(self.predict_Button)
 
@@ -125,6 +120,7 @@ class Ui_MainWindow(object):
 
         self.unit = QLabel(self.verticalLayoutWidget)
         self.unit.setObjectName(u"unit")
+        self.unit.setFont(font)
 
         self.horizontalLayout_2.addWidget(self.unit)
 
@@ -132,15 +128,17 @@ class Ui_MainWindow(object):
         self.Buttons.addLayout(self.horizontalLayout_2)
 
 
-        self.verticalLayout.addLayout(self.Buttons)
+        self.ControlPnael_Layout.addLayout(self.Buttons)
 
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.verticalLayout_5 = QVBoxLayout()
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.HCtextLabel = QLabel(self.verticalLayoutWidget)
         self.HCtextLabel.setObjectName(u"HCtextLabel")
         self.HCtextLabel.setFont(font)
-        self.HCtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.HCtextLabel.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.HCtextLabel.setIndent(0)
 
         self.verticalLayout_5.addWidget(self.HCtextLabel)
@@ -148,7 +146,7 @@ class Ui_MainWindow(object):
         self.BPDtextLabel = QLabel(self.verticalLayoutWidget)
         self.BPDtextLabel.setObjectName(u"BPDtextLabel")
         self.BPDtextLabel.setFont(font)
-        self.BPDtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.BPDtextLabel.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.BPDtextLabel.setIndent(0)
 
         self.verticalLayout_5.addWidget(self.BPDtextLabel)
@@ -156,7 +154,7 @@ class Ui_MainWindow(object):
         self.OFDtextLabel = QLabel(self.verticalLayoutWidget)
         self.OFDtextLabel.setObjectName(u"OFDtextLabel")
         self.OFDtextLabel.setFont(font)
-        self.OFDtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.OFDtextLabel.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.OFDtextLabel.setIndent(0)
 
         self.verticalLayout_5.addWidget(self.OFDtextLabel)
@@ -164,45 +162,88 @@ class Ui_MainWindow(object):
         self.GAtextLabel = QLabel(self.verticalLayoutWidget)
         self.GAtextLabel.setObjectName(u"GAtextLabel")
         self.GAtextLabel.setFont(font)
-        self.GAtextLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.GAtextLabel.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.GAtextLabel.setIndent(0)
 
         self.verticalLayout_5.addWidget(self.GAtextLabel)
 
 
-        self.verticalLayout.addLayout(self.verticalLayout_5)
+        self.horizontalLayout.addLayout(self.verticalLayout_5)
+
+        self.verticalLayout_9 = QVBoxLayout()
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.HCtextLabel_5 = QLabel(self.verticalLayoutWidget)
+        self.HCtextLabel_5.setObjectName(u"HCtextLabel_5")
+        self.HCtextLabel_5.setFont(font)
+        self.HCtextLabel_5.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.HCtextLabel_5.setIndent(0)
+
+        self.verticalLayout_9.addWidget(self.HCtextLabel_5)
+
+        self.BPDtextLabel_5 = QLabel(self.verticalLayoutWidget)
+        self.BPDtextLabel_5.setObjectName(u"BPDtextLabel_5")
+        self.BPDtextLabel_5.setFont(font)
+        self.BPDtextLabel_5.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.BPDtextLabel_5.setIndent(0)
+
+        self.verticalLayout_9.addWidget(self.BPDtextLabel_5)
+
+        self.OFDtextLabel_5 = QLabel(self.verticalLayoutWidget)
+        self.OFDtextLabel_5.setObjectName(u"OFDtextLabel_5")
+        self.OFDtextLabel_5.setFont(font)
+        self.OFDtextLabel_5.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.OFDtextLabel_5.setIndent(0)
+
+        self.verticalLayout_9.addWidget(self.OFDtextLabel_5)
+
+        self.GAtextLabel_5 = QLabel(self.verticalLayoutWidget)
+        self.GAtextLabel_5.setObjectName(u"GAtextLabel_5")
+        self.GAtextLabel_5.setFont(font)
+        self.GAtextLabel_5.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.GAtextLabel_5.setIndent(0)
+
+        self.verticalLayout_9.addWidget(self.GAtextLabel_5)
+
+
+        self.horizontalLayout.addLayout(self.verticalLayout_9)
+
+
+        self.ControlPnael_Layout.addLayout(self.horizontalLayout)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout.addItem(self.verticalSpacer)
+        self.ControlPnael_Layout.addItem(self.verticalSpacer)
 
         self.save_Button = QPushButton(self.verticalLayoutWidget)
         self.save_Button.setObjectName(u"save_Button")
         self.save_Button.setEnabled(False)
+        self.save_Button.setFont(font1)
 
-        self.verticalLayout.addWidget(self.save_Button)
+        self.ControlPnael_Layout.addWidget(self.save_Button)
 
         self.exit_Button = QPushButton(self.verticalLayoutWidget)
         self.exit_Button.setObjectName(u"exit_Button")
+        self.exit_Button.setFont(font1)
 
-        self.verticalLayout.addWidget(self.exit_Button)
+        self.ControlPnael_Layout.addWidget(self.exit_Button)
 
 
-        self.horizontalLayout.addLayout(self.verticalLayout)
+        self.Workspace_Layout.addLayout(self.ControlPnael_Layout)
 
         self.graphicsView = QGraphicsView(self.verticalLayoutWidget)
         self.graphicsView.setObjectName(u"graphicsView")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.graphicsView.sizePolicy().hasHeightForWidth())
-        self.graphicsView.setSizePolicy(sizePolicy3)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.graphicsView.sizePolicy().hasHeightForWidth())
+        self.graphicsView.setSizePolicy(sizePolicy2)
 
-        self.horizontalLayout.addWidget(self.graphicsView)
+        self.Workspace_Layout.addWidget(self.graphicsView)
 
-        self.horizontalLayout.setStretch(1, 1)
+        self.Workspace_Layout.setStretch(1, 1)
 
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.verticalLayout_2.addLayout(self.Workspace_Layout)
 
         self.contactUs_Layout = QHBoxLayout()
         self.contactUs_Layout.setObjectName(u"contactUs_Layout")
@@ -210,26 +251,50 @@ class Ui_MainWindow(object):
 
         self.contactUs_Layout.addItem(self.horizontalSpacer)
 
+        self.Br3inLOGO = QGraphicsView(self.verticalLayoutWidget)
+        self.Br3inLOGO.setObjectName(u"Br3inLOGO")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.Br3inLOGO.sizePolicy().hasHeightForWidth())
+        self.Br3inLOGO.setSizePolicy(sizePolicy3)
+
+        self.contactUs_Layout.addWidget(self.Br3inLOGO)
+
+        self.DIILOGO = QGraphicsView(self.verticalLayoutWidget)
+        self.DIILOGO.setObjectName(u"DIILOGO")
+        sizePolicy3.setHeightForWidth(self.DIILOGO.sizePolicy().hasHeightForWidth())
+        self.DIILOGO.setSizePolicy(sizePolicy3)
+
+        self.contactUs_Layout.addWidget(self.DIILOGO)
+
+        self.logoUNIVPM = QGraphicsView(self.verticalLayoutWidget)
+        self.logoUNIVPM.setObjectName(u"logoUNIVPM")
+        sizePolicy3.setHeightForWidth(self.logoUNIVPM.sizePolicy().hasHeightForWidth())
+        self.logoUNIVPM.setSizePolicy(sizePolicy3)
+
+        self.contactUs_Layout.addWidget(self.logoUNIVPM)
+
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.label = QLabel(self.verticalLayoutWidget)
         self.label.setObjectName(u"label")
-        font1 = QFont()
-        font1.setFamilies([u"Times New Roman"])
-        font1.setPointSize(10)
-        self.label.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Times New Roman"])
+        font2.setPointSize(10)
+        self.label.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.label)
 
         self.label_2 = QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font1)
+        self.label_2.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.label_2)
 
         self.label_3 = QLabel(self.verticalLayoutWidget)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font1)
+        self.label_3.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.label_3)
 
@@ -239,7 +304,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.contactUs_Layout)
 
-        self.verticalLayout_2.setStretch(1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -264,14 +328,18 @@ class Ui_MainWindow(object):
         self.loadImage_Button.setText(QCoreApplication.translate("MainWindow", u"Load Image", None))
         self.predict_Button.setText(QCoreApplication.translate("MainWindow", u"Make Prediction", None))
         self.unit.setText(QCoreApplication.translate("MainWindow", u"mm", None))
-        self.HCtextLabel.setText(QCoreApplication.translate("MainWindow", u"HC: mm", None))
-        self.BPDtextLabel.setText(QCoreApplication.translate("MainWindow", u"BPD: mm", None))
-        self.OFDtextLabel.setText(QCoreApplication.translate("MainWindow", u"OFD: mm", None))
+        self.HCtextLabel.setText(QCoreApplication.translate("MainWindow", u"HC:", None))
+        self.BPDtextLabel.setText(QCoreApplication.translate("MainWindow", u"BPD:", None))
+        self.OFDtextLabel.setText(QCoreApplication.translate("MainWindow", u"OFD:", None))
         self.GAtextLabel.setText(QCoreApplication.translate("MainWindow", u"PGA: W; D", None))
+        self.HCtextLabel_5.setText(QCoreApplication.translate("MainWindow", u"mm", None))
+        self.BPDtextLabel_5.setText(QCoreApplication.translate("MainWindow", u"mm", None))
+        self.OFDtextLabel_5.setText(QCoreApplication.translate("MainWindow", u"mm", None))
+        self.GAtextLabel_5.setText("")
         self.save_Button.setText(QCoreApplication.translate("MainWindow", u"Save Prediction", None))
         self.exit_Button.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Contact Us:", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Professor: Laura Burattini", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Prof. Laura Burattini", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"l.burattini@univpm.it", None))
     # retranslateUi
 

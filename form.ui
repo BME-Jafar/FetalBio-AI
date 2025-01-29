@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1095</width>
-    <height>735</height>
+    <height>893</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -56,17 +56,17 @@
       <x>20</x>
       <y>0</y>
       <width>1061</width>
-      <height>691</height>
+      <height>839</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0">
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
      <item>
       <layout class="QHBoxLayout" name="PatientLayout">
        <item>
         <widget class="QLabel" name="IDtext">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
@@ -78,7 +78,7 @@
         <widget class="QLabel" name="MOTHERAGEtext">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
@@ -90,7 +90,7 @@
         <widget class="QLabel" name="GAtext">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
@@ -102,7 +102,7 @@
         <widget class="QLabel" name="EDDtext">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
@@ -113,7 +113,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+      <layout class="QHBoxLayout" name="Workspace_Layout" stretch="0,1">
        <property name="sizeConstraint">
         <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
        </property>
@@ -130,24 +130,19 @@
         <number>0</number>
        </property>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
+        <layout class="QVBoxLayout" name="ControlPnael_Layout" stretch="0,0,0,0,0">
          <item>
           <layout class="QVBoxLayout" name="Buttons">
            <property name="spacing">
             <number>20</number>
            </property>
            <item>
-            <widget class="QGraphicsView" name="logoUNIVPM">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="newSub_Button">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>New Subject</string>
              </property>
@@ -158,6 +153,11 @@
              <property name="enabled">
               <bool>false</bool>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Load Image</string>
              </property>
@@ -167,6 +167,11 @@
             <widget class="QPushButton" name="predict_Button">
              <property name="enabled">
               <bool>false</bool>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
              </property>
              <property name="text">
               <string>Make Prediction</string>
@@ -180,6 +185,11 @@
              </item>
              <item>
               <widget class="QLabel" name="unit">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="text">
                 <string>mm</string>
                </property>
@@ -190,81 +200,164 @@
           </layout>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <property name="spacing">
-            <number>0</number>
-           </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QLabel" name="HCtextLabel">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>HC: mm</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="indent">
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="spacing">
               <number>0</number>
              </property>
-            </widget>
+             <item>
+              <widget class="QLabel" name="HCtextLabel">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>HC:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="indent">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="BPDtextLabel">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>BPD:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="indent">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="OFDtextLabel">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>OFD:</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="indent">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="GAtextLabel">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>PGA: W; D</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="indent">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QLabel" name="BPDtextLabel">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>BPD: mm</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="indent">
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <property name="spacing">
               <number>0</number>
              </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="OFDtextLabel">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>OFD: mm</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="indent">
-              <number>0</number>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="GAtextLabel">
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>PGA: W; D</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="indent">
-              <number>0</number>
-             </property>
-            </widget>
+             <item>
+              <widget class="QLabel" name="HCtextLabel_5">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>mm</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="indent">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="BPDtextLabel_5">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>mm</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="indent">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="OFDtextLabel_5">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>mm</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="indent">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="GAtextLabel_5">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+               <property name="indent">
+                <number>0</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </item>
@@ -286,6 +379,11 @@
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Save Prediction</string>
            </property>
@@ -293,6 +391,11 @@
          </item>
          <item>
           <widget class="QPushButton" name="exit_Button">
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Exit</string>
            </property>
@@ -328,6 +431,36 @@
         </spacer>
        </item>
        <item>
+        <widget class="QGraphicsView" name="Br3inLOGO">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGraphicsView" name="DIILOGO">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGraphicsView" name="logoUNIVPM">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <widget class="QLabel" name="label">
@@ -351,7 +484,7 @@
             </font>
            </property>
            <property name="text">
-            <string>Professor: Laura Burattini</string>
+            <string>Prof. Laura Burattini</string>
            </property>
           </widget>
          </item>

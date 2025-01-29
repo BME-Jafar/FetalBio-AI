@@ -35,18 +35,18 @@ from info import Ui_Form
 def set_dark_theme():
     app.setStyleSheet("""
         QWidget {
-            background-color: #333;
-            color: white;
+            background-color: #F2F2F2;
+            color: black;
         }
         QPushButton {
-            background-color: #2FA572;
+            background-color: #A00000;
             color: white;
             border: 1px solid #777;
             border-radius: 5px;
             padding: 5px;
         }
         QPushButton:hover {
-            background-color: #106A43;
+            background-color: #730d0d;
         }
     """)
 
@@ -62,7 +62,7 @@ class MainWindow(QMainWindow):
         self.pixelSizesDB = pd.concat([df1, df2], ignore_index=True)
 
 
-    def showImage(self, numpyImage, ellipse_params=None, LOGO = False):
+    def showImage(self, numpyImage, GraphicalScene=None ,ellipse_params=None, LOGO = False):
         """
         Displays the image in the graphics view and optionally draws an ellipse.
 
@@ -72,15 +72,23 @@ class MainWindow(QMainWindow):
         """
 
         # Convert the NumPy image to QImage
-        height, width = numpyImage.shape
+
+        shape = numpyImage.shape
+        height, width = shape[0], shape[1]
+
         bytes_per_line = width
-        qimage = QImage(numpyImage.data, width, height, bytes_per_line, QImage.Format_Grayscale8)
+
+        if len(shape) == 2:
+            qimage = QImage(numpyImage.data, width, height, bytes_per_line, QImage.Format_Grayscale8)
+        elif len(shape) == 3:
+            qimage = QImage(numpyImage.data, numpyImage.shape[1], numpyImage.shape[0],
+                            numpyImage.strides[0], QImage.Format_RGB888)
 
         # Convert QImage to QPixmap and display in the QGraphicsView
         pixmap = QPixmap.fromImage(qimage)
         if LOGO:
             scene = QGraphicsScene()
-            self.ui.logoUNIVPM.setScene(scene)
+            GraphicalScene.setScene(scene)
             scene.clear()  # Clear any existing items in the scene
             pixmap_item = scene.addPixmap(pixmap)
             return
@@ -176,10 +184,10 @@ class MainWindow(QMainWindow):
             print("NO MODEL IS LOADED!")
 
     def reset(self):
-        self.ui.HCtextLabel.setText(f"HC: {0.00:.2f} mm")
+        self.ui.HCtextLabel.setText(f"HC: {0.00:.2f}")
         self.ui.GAtextLabel.setText(f"GA: {0}w {0}d")
-        self.ui.OFDtextLabel.setText(f"OFD: {0.00:.2f} mm")
-        self.ui.BPDtextLabel.setText(f"BPD: {0.00:.2f} mm")
+        self.ui.OFDtextLabel.setText(f"OFD: {0.00:.2f}")
+        self.ui.BPDtextLabel.setText(f"BPD: {0.00:.2f}")
 
     def make_prediction(self):
         self.reset()
@@ -288,10 +296,10 @@ class MainWindow(QMainWindow):
         BPD = BPD.replace("BPD: ", "")
 
         data = {
-            "HC": HC,
-            "PGA": GA,
-            "OFD": OFD,
-            "BPD": BPD
+            "HC": HC + "mm",
+            "PGA": GA + "mm",
+            "OFD": OFD + "mm",
+            "BPD": BPD + "mm"
         }
         data.update(self.metaData)
         # Save the dictionary as a text file
@@ -331,17 +339,39 @@ class MainWindow(QMainWindow):
         self.ui.logoUNIVPM.setStyleSheet("border: 0px")
         try:
             LOGO = cv2.imread("univpmLogo.png", cv2.IMREAD_GRAYSCALE)
-            self.showImage(LOGO, False, True)
+            self.showImage(LOGO, self.ui.logoUNIVPM,None, True)
         except Exception as e:
             print(str(e))
 
+        #Set DII LOGO
+        self.DIILOGO = QGraphicsScene()
+        self.ui.DIILOGO.setScene(self.DIILOGO)
+        self.ui.DIILOGO.setStyleSheet("border: 0px")
+        try:
+            LOGO = cv2.imread("DIILOGO.png", cv2.COLOR_BGR2RGB)
+            LOGO[:,:,[0,-1]] = LOGO[:,:,[-1,0]]
+            self.showImage(LOGO, self.ui.DIILOGO,None, True)
+        except Exception as e:
+            print(str(e))
+
+        #
+        #Set br3in LOGO
+        self.Br3inLOGO = QGraphicsScene()
+        self.ui.Br3inLOGO.setScene(self.Br3inLOGO)
+        self.ui.Br3inLOGO.setStyleSheet("border: 0px")
+        try:
+            LOGO = cv2.imread("br3inLOGO.png", cv2.COLOR_BGR2RGB)
+            LOGO[:,:,[0,-1]] = LOGO[:,:,[-1,0]]
+            self.showImage(LOGO, self.ui.Br3inLOGO,None, True)
+        except Exception as e:
+            print(str(e))
 
         # Create a QGraphicsScene and set it for the QGraphicsView
         self.scene = QGraphicsScene()
         self.ui.graphicsView.setScene(self.scene)
 
         # Set the window title
-        self.setWindowTitle("FetalBio-AI - Br3in UNIVPM")
+        self.setWindowTitle("FetalBio-AI")
 
         # Set window icon
         self.setWindowIcon(QIcon('3.png'))
