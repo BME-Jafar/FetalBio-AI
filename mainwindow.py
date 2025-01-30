@@ -6,7 +6,6 @@ import cv2
 import numpy as np
 import pandas as pd
 import math
-import re
 from PIL import Image
 
 from skimage.transform import resize
@@ -19,7 +18,7 @@ from skimage.measure import label, regionprops
 import matplotlib.patches as patches
 import pydicom
 
-from tensorflow.keras.models import load_model, model_from_json
+from tensorflow.keras.models import model_from_json
 
 from pydicom.pixel_data_handlers.util import convert_color_space
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog,  QGraphicsScene, QGraphicsEllipseItem, QWidget, QMessageBox
@@ -87,7 +86,7 @@ class MainWindow(QMainWindow):
             scene = QGraphicsScene()
             GraphicalScene.setScene(scene)
             scene.clear()  # Clear any existing items in the scene
-            pixmap_item = scene.addPixmap(pixmap)
+            scene.addPixmap(pixmap)
             return
 
         scene = self.ui.graphicsView.scene()
@@ -97,7 +96,7 @@ class MainWindow(QMainWindow):
             self.ui.graphicsView.setScene(scene)
 
         scene.clear()  # Clear any existing items in the scene
-        pixmap_item = scene.addPixmap(pixmap)
+        scene.addPixmap(pixmap)
 
         # Draw the ellipse if parameters are provided
         if self.ellipse_params is not None:
@@ -184,7 +183,7 @@ class MainWindow(QMainWindow):
             self.modelFlag = True
         except:
             self.modelFlag = False
-            print("NO MODEL IS LOADED!")
+            #print("NO MODEL IS LOADED!")
 
     def reset(self):
         self.ui.HCtextLabel.setText(f"HC: {0.00:.2f}")
@@ -205,8 +204,6 @@ class MainWindow(QMainWindow):
             original_height = np.shape(self.imageNumpy)[0]
             original_width = np.shape(self.imageNumpy)[1]
 
-            resize_factor = (original_height / 256, original_width / 256)
-
             resized_predictions = np.array(resize(predicted_image_array.squeeze(), (original_height, original_width), mode='reflect'))
 
             threshold_value = 0.5
@@ -221,7 +218,7 @@ class MainWindow(QMainWindow):
             refined_predictions = np.array(apply_morphological_operations(binary_predictions))
 
             def keep_largest_connected_component(binary_mask):
-                labeled_mask, num_features = label(binary_mask, connectivity=2, return_num=True)
+                labeled_mask, _ = label(binary_mask, connectivity=2, return_num=True)
                 props = regionprops(labeled_mask)
                 largest_area = 0
                 largest_label = 0
@@ -236,9 +233,6 @@ class MainWindow(QMainWindow):
 
             # print(f"Largest component predictions shape: {largest_component_predictions.shape}")
 
-            # display_image(largest_component_predictions)
-
-            ellipse_parameters = []
             contours, _ = cv2.findContours(largest_component_predictions.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             if len(contours) > 0:
                 self.ellipse_params = cv2.fitEllipse(contours[0])
@@ -254,12 +248,13 @@ class MainWindow(QMainWindow):
                 semi_major_axis = self.ellipse_params[1][0] / 2.0
                 semi_minor_axis = self.ellipse_params[1][1] / 2.0
 
-                circumference_pixels = math.pi * math.sqrt(2 * (semi_major_axis**2 + semi_minor_axis**2))
+                
                 BPD = semi_major_axis * pixel_size_value * 2
                 OFD = semi_minor_axis * pixel_size_value * 2
                 HC = math.pi * (BPD + OFD) / 2
 
-                circumference_desired_unit = circumference_pixels * pixel_size_value
+                #circumference_pixels = math.pi * math.sqrt(2 * (semi_major_axis**2 + semi_minor_axis**2))
+                #circumference_desired_unit = circumference_pixels * pixel_size_value
 
 
                 if pixel_size_value != 0:
@@ -273,10 +268,10 @@ class MainWindow(QMainWindow):
                     remaining_days_poly = 0
                 # print(f"{int(weeks)} weeks and {remaining_days:.4f} days")
 
-                self.ui.HCtextLabel.setText(f"HC: {HC:.2f} mm")
+                self.ui.HCtextLabel.setText(f"HC: {HC:.2f}")
                 self.ui.GAtextLabel.setText(f"PGA: {weeks_poly}w {remaining_days_poly}d")
-                self.ui.OFDtextLabel.setText(f"OFD: {OFD:.2f} mm")
-                self.ui.BPDtextLabel.setText(f"BPD: {BPD:.2f} mm")
+                self.ui.OFDtextLabel.setText(f"OFD: {OFD:.2f}")
+                self.ui.BPDtextLabel.setText(f"BPD: {BPD:.2f}")
 
                 self.showImage(self.imageNumpy, self.ellipse_params)
                 self.ui.save_Button.setEnabled(True)
@@ -294,13 +289,13 @@ class MainWindow(QMainWindow):
 
         # Clean the input strings to remove unnecessary prefixes
         HC = HC.replace("HC: ", "")
-        GA = GA.replace("GA: ", "")
+        GA = GA.replace("PGA: ", "")
         OFD = OFD.replace("OFD: ", "")
         BPD = BPD.replace("BPD: ", "")
 
         data = {
             "HC": HC + "mm",
-            "PGA": GA + "mm",
+            "PGA": GA,
             "OFD": OFD + "mm",
             "BPD": BPD + "mm"
         }
@@ -483,22 +478,22 @@ class AnotherWindow(QWidget):
 
         Age = self.ui.AgeInput.text()
         if Age.isdigit():
-            result['Age'] = int(Age)
+            result['Age'] = Age + " Y" 
         else:
             self.show_error_message()
             return None
 
         Weight = self.ui.WeightInput.text()
         if Weight.isdigit():
-            result['Weight'] = int(Weight)
+            result['Weight'] = Weight + " Kg"
 
         Height = self.ui.HeightInput.text()
         if Height.isdigit():
-            result['Height'] = int(Height)
+            result['Height'] = Height + " cm"
 
         BMI = self.ui.BmiInput.text()
         if BMI:  # Check if BMI is not empty
-            result['BMI'] = float(BMI)  # Ensure BMI is passed as a float
+            result['BMI'] = BMI + "Kg/cm2"  # Ensure BMI is passed as a float
 
         Gravidity = self.ui.GravidityBox.currentText()
         if Gravidity.lower() != "unknown":
@@ -559,10 +554,6 @@ class AnotherWindow(QWidget):
         self.cancel_signal.emit(False)
         self.close()
 
-
-
-
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     # Set dark theme
@@ -571,5 +562,3 @@ if __name__ == "__main__":
     widget = MainWindow()
     widget.show()
     sys.exit(app.exec())
-
-
