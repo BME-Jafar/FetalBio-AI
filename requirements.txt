@@ -1,8 +1,0 @@
-PySide6
-opencv-python
-numpy
-pydicom
-pandas
-PILLOW
-scikit-image
-tensorflow==2.13.1
