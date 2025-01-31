@@ -159,14 +159,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_5.addWidget(self.OFDtextLabel)
 
-        self.GAtextLabel = QLabel(self.verticalLayoutWidget)
-        self.GAtextLabel.setObjectName(u"GAtextLabel")
-        self.GAtextLabel.setFont(font)
-        self.GAtextLabel.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.GAtextLabel.setIndent(0)
-
-        self.verticalLayout_5.addWidget(self.GAtextLabel)
-
 
         self.horizontalLayout.addLayout(self.verticalLayout_5)
 
@@ -196,14 +188,6 @@ class Ui_MainWindow(object):
         self.OFDtextLabel_5.setIndent(0)
 
         self.verticalLayout_9.addWidget(self.OFDtextLabel_5)
-
-        self.GAtextLabel_5 = QLabel(self.verticalLayoutWidget)
-        self.GAtextLabel_5.setObjectName(u"GAtextLabel_5")
-        self.GAtextLabel_5.setFont(font)
-        self.GAtextLabel_5.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
-        self.GAtextLabel_5.setIndent(0)
-
-        self.verticalLayout_9.addWidget(self.GAtextLabel_5)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout_9)
@@ -350,11 +334,9 @@ class Ui_MainWindow(object):
         self.HCtextLabel.setText(QCoreApplication.translate("MainWindow", u"HC:", None))
         self.BPDtextLabel.setText(QCoreApplication.translate("MainWindow", u"BPD:", None))
         self.OFDtextLabel.setText(QCoreApplication.translate("MainWindow", u"OFD:", None))
-        self.GAtextLabel.setText(QCoreApplication.translate("MainWindow", u"PGA: W; D", None))
         self.HCtextLabel_5.setText(QCoreApplication.translate("MainWindow", u"mm", None))
         self.BPDtextLabel_5.setText(QCoreApplication.translate("MainWindow", u"mm", None))
         self.OFDtextLabel_5.setText(QCoreApplication.translate("MainWindow", u"mm", None))
-        self.GAtextLabel_5.setText("")
         self.save_Button.setText(QCoreApplication.translate("MainWindow", u"Save Prediction", None))
         self.exit_Button.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
         self.label_5.setText("")

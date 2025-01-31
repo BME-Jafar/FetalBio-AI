@@ -187,7 +187,6 @@ class MainWindow(QMainWindow):
 
     def reset(self):
         self.ui.HCtextLabel.setText(f"HC: {0.00:.2f}")
-        self.ui.GAtextLabel.setText(f"PGA: {0}w {0}d")
         self.ui.OFDtextLabel.setText(f"OFD: {0.00:.2f}")
         self.ui.BPDtextLabel.setText(f"BPD: {0.00:.2f}")
 
@@ -231,8 +230,6 @@ class MainWindow(QMainWindow):
 
             largest_component_predictions = np.array(keep_largest_connected_component(refined_predictions))
 
-            # print(f"Largest component predictions shape: {largest_component_predictions.shape}")
-
             contours, _ = cv2.findContours(largest_component_predictions.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
             if len(contours) > 0:
                 self.ellipse_params = cv2.fitEllipse(contours[0])
@@ -248,30 +245,13 @@ class MainWindow(QMainWindow):
                 semi_major_axis = self.ellipse_params[1][0] / 2.0
                 semi_minor_axis = self.ellipse_params[1][1] / 2.0
 
-                
                 BPD = semi_major_axis * pixel_size_value * 2
                 OFD = semi_minor_axis * pixel_size_value * 2
                 HC = math.pi * (BPD + OFD) / 2
 
-                #circumference_pixels = math.pi * math.sqrt(2 * (semi_major_axis**2 + semi_minor_axis**2))
-                #circumference_desired_unit = circumference_pixels * pixel_size_value
-
-
-                if pixel_size_value != 0:
-                    GA_poly = 1.49*(HC/10)+0.13*(HC/10)**2+73.38
-                    # print(f"GA_poly: {GA_poly}")
-                    # Convert to weeks and days
-                    weeks_poly = int(GA_poly // 7)
-                    remaining_days_poly = round(GA_poly % 7)
-                else:
-                    weeks_poly = 0
-                    remaining_days_poly = 0
-                # print(f"{int(weeks)} weeks and {remaining_days:.4f} days")
-
-                self.ui.HCtextLabel.setText(f"HC: {HC:.2f}")
-                self.ui.GAtextLabel.setText(f"PGA: {weeks_poly}w {remaining_days_poly}d")
-                self.ui.OFDtextLabel.setText(f"OFD: {OFD:.2f}")
-                self.ui.BPDtextLabel.setText(f"BPD: {BPD:.2f}")
+                self.ui.HCtextLabel.setText(f"HC: {HC:.2f} mm")
+                self.ui.OFDtextLabel.setText(f"OFD: {OFD:.2f} mm")
+                self.ui.BPDtextLabel.setText(f"BPD: {BPD:.2f} mm")
 
                 self.showImage(self.imageNumpy, self.ellipse_params)
                 self.ui.save_Button.setEnabled(True)
@@ -283,19 +263,16 @@ class MainWindow(QMainWindow):
     def savePrediction(self):
 
         HC = self.ui.HCtextLabel.text()
-        GA = self.ui.GAtextLabel.text()
         OFD = self.ui.OFDtextLabel.text()
         BPD = self.ui.BPDtextLabel.text()
 
         # Clean the input strings to remove unnecessary prefixes
         HC = HC.replace("HC: ", "")
-        GA = GA.replace("PGA: ", "")
         OFD = OFD.replace("OFD: ", "")
         BPD = BPD.replace("BPD: ", "")
 
         data = {
             "HC": HC + "mm",
-            "PGA": GA,
             "OFD": OFD + "mm",
             "BPD": BPD + "mm"
         }
@@ -478,22 +455,22 @@ class AnotherWindow(QWidget):
 
         Age = self.ui.AgeInput.text()
         if Age.isdigit():
-            result['Age'] = Age + " Y" 
+            result['Age'] = int(Age)
         else:
             self.show_error_message()
             return None
 
         Weight = self.ui.WeightInput.text()
         if Weight.isdigit():
-            result['Weight'] = Weight + " Kg"
+            result['Weight'] = int(Weight)
 
         Height = self.ui.HeightInput.text()
         if Height.isdigit():
-            result['Height'] = Height + " cm"
+            result['Height'] = int(Height)
 
         BMI = self.ui.BmiInput.text()
         if BMI:  # Check if BMI is not empty
-            result['BMI'] = BMI + "Kg/cm2"  # Ensure BMI is passed as a float
+            result['BMI'] = float(BMI)  # Ensure BMI is passed as a float
 
         Gravidity = self.ui.GravidityBox.currentText()
         if Gravidity.lower() != "unknown":
@@ -554,6 +531,10 @@ class AnotherWindow(QWidget):
         self.cancel_signal.emit(False)
         self.close()
 
+
+
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     # Set dark theme
@@ -562,3 +543,5 @@ if __name__ == "__main__":
     widget = MainWindow()
     widget.show()
     sys.exit(app.exec())
+
+
