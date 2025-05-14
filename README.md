@@ -24,18 +24,20 @@ FetalBio-AI holds significant potential for scalability, making it a promising t
 
 ### Steps
 
-1. Download the ZIP folder **FetalBio-AI-main**.
-2. Extract the contents to a desired folder on your PC.
-3. Open **Command Prompt** and navigate to the extracted folder.
-4. If the required dependencies are not installed, use the following command:
+1. Clone the repository to your local machine 
+    ```sh
+     git clone https://github.com/BME-Jafar/FetalBio-AI/
+    ```
+2. Open **Command Prompt** and navigate to the extracted folder.
+3. If the required dependencies are not installed, use the following command:
     ```sh
     pip install -r requirements.txt
     ```
-5. Once the dependencies from `requirements.txt` are installed successfully, run the main application with the following command:
+4. Once the dependencies from `requirements.txt` are installed successfully, run the main application with the following command:
     ```sh
     python mainwindow.py
     ```
-6. The **FetalBio-AI** GUI will launch. From this point, you can begin using it to obtain fetal biometry estimations.
+5. The **FetalBio-AI** GUI will launch. From this point, you can begin using it to obtain fetal biometry estimations.
 
 ## Usage
 
