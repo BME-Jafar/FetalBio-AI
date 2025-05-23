@@ -56,3 +56,17 @@ FetalBio-AI holds significant potential for scalability, making it a promising t
 4. **Save Reports**:
    - Click on the **"Save Prediction"** button to save the estimated biometric data and clinical data in a `.txt` file.
    - The ultrasound image with the overlaid HC measurement will be saved as a `.PNG` file.
+## Citation
+
+If you use FetalBio-AI in your research, please cite:
+
+Sbrollini, A., Gjika, M., Mortada, M. J., AlKalet, M., & Burattini, L. (2025).  
+**FetalBio-AI: A Novel AI-Based Software for Fetal Biometry Estimation**.  
+Presented at the GNB 2025 Conference, Palermo, Italy.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute it, provided that proper credit is given.
