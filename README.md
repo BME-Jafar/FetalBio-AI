@@ -8,6 +8,8 @@ Developed by **[BR3iN Group](https://br3in.dii.univpm.it/)**
 Biomedical Engineering Research & Innovation Network  
 🔗 [LinkedIn](www.linkedin.com/in/br3in-univpm-3825341a2)
 
+![BR3iN Group Logo](./br3in_logo.png)
+
 **FetalBio-AI** is an innovative AI-based software designed to automate the estimation of fetal head biometry from ultrasound images. With a user-friendly interface, it integrates a **U-Net model** for image segmentation, enabling the detection of the fetal head and computation of key biometric parameters, including **Biparietal Diameter (BPD)**, **Occipitofrontal Diameter (OFD)**, and **Head Circumference (HC)**. Additionally, FetalBio-AI tracks both maternal and fetal clinical data. The software was validated using the open-access **HC18 Grand Challenge dataset**.
 
 FetalBio-AI holds significant potential for scalability, making it a promising tool for future applications in fetal monitoring.
