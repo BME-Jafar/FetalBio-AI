@@ -1,23 +1,6 @@
-<table style="width:100%; border: none;">
-  <tr>
-    <td style="text-align: left; vertical-align: middle;">
-      <h1 style="font-size: 2.5em;">FetalBio-AI</h1>
-      <p>
-        Developed by <a href="https://br3in.dii.univpm.it/">BR3iN Group</a><br>
-        Biomedical Engineering Research & Innovation Network<br>
-        🔗 <a href="https://www.linkedin.com/in/br3in-univpm-3825341a2/">LinkedIn</a>
-      </p>
-    </td>
-    <td style="text-align: right; vertical-align: middle;">
-      <img src="./br3inlogo.png" alt="BR3iN Group Logo" width="100">
-    </td>
-  </tr>
-</table>
-
-## Description
-
-This work is a contribution presented at the **GNB 2025 Conference**, Palermo, Italy, from **June 16th to 18th**, titled **“FetalBio-AI: A Novel AI-Based Software for Fetal Biometry Estimation.”** The authors are **A. Sbrollini, M. Gjika, M.**
-
+<p align="right">
+  <img src="./br3inlogo.png" alt="BR3iN Group Logo" width="120">
+</p>
 
 # FetalBio-AI
 
