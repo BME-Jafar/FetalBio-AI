@@ -1,8 +1,3 @@
-<p align="right" style="margin-bottom:0;">
-  <img src="./br3inlogo.png" alt="BR3iN Group Logo" width="120">
-</p>
-<h1 style="margin-top:0;">FetalBio-AI</h1>
-
 # FetalBio-AI
 
 ## Description
@@ -70,7 +65,11 @@ If you use FetalBio-AI in your research, please cite:
 
 Sbrollini, A., Gjika, M., Mortada, M. J., AlKalet, M., & Burattini, L. (2025).  
 **FetalBio-AI: A Novel AI-Based Software for Fetal Biometry Estimation**.  
+
 Presented at the GNB 2025 Conference, Palermo, Italy.
+<p align="right" style="margin-bottom:0;">
+  <img src="./br3inlogo.png" alt="BR3iN Group Logo" width="120">
+</p>
 
 ---
 
