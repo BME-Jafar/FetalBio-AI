@@ -1,6 +1,7 @@
-<p align="right">
+<p align="right" style="margin-bottom:0;">
   <img src="./br3inlogo.png" alt="BR3iN Group Logo" width="120">
 </p>
+<h1 style="margin-top:0;">FetalBio-AI</h1>
 
 # FetalBio-AI
 
@@ -10,8 +11,6 @@ This work is a contribution presented at the **GNB 2025 Conference**, Palermo, I
 
 Developed by **[BR3iN Group](https://br3in.dii.univpm.it/)**  
 Biomedical Engineering Research & Innovation Network  🔗 [LinkedIn](https://www.linkedin.com/in/br3in-univpm-3825341a2/)
-
-<img src="./br3inlogo.png" alt="BR3iN Group Logo" width="200"/>
 
 **FetalBio-AI** is an innovative AI-based software designed to automate the estimation of fetal head biometry from ultrasound images. With a user-friendly interface, it integrates a **U-Net model** for image segmentation, enabling the detection of the fetal head and computation of key biometric parameters, including **Biparietal Diameter (BPD)**, **Occipitofrontal Diameter (OFD)**, and **Head Circumference (HC)**. Additionally, FetalBio-AI tracks both maternal and fetal clinical data. The software was validated using the open-access **HC18 Grand Challenge dataset**.
 
