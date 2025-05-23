@@ -1,3 +1,17 @@
+<table>
+  <tr>
+    <td><img src="./br3inlogo.png" alt="BR3iN Group Logo" width="80"></td>
+    <td>
+      <h1>FetalBio-AI</h1>
+      <p>
+        Developed by <a href="https://br3in.dii.univpm.it/">BR3iN Group</a><br>
+        Biomedical Engineering Research & Innovation Network<br>
+        🔗 <a href="https://www.linkedin.com/in/br3in-univpm-3825341a2/">LinkedIn</a>
+      </p>
+    </td>
+  </tr>
+</table>
+
 # FetalBio-AI
 
 ## Description
