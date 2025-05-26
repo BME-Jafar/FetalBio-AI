@@ -65,9 +65,13 @@ FetalBio-AI holds significant potential for scalability, making it a promising t
 If you use **FetalBio-AI** in your research or application, please cite both the **conference paper** and the **software repository**:
 
 **1. Conference Paper**  
-Sbrollini, A., Gjika, M., Mortada, M. J., AlKalet, M., & Burattini, L. (2025).  
-**FetalBio-AI: A Novel AI-Based Software for Fetal Biometry Estimation.**  
-Presented at the *GNB 2025 Conference*, Palermo, Italy.
+
+> Sbrollini, A., Gjika, M., Mortada, M. J., AlKalet, M., & Burattini, L. (2025). **FetalBio-AI: A Novel AI-Based Software for Fetal Biometry Estimation.** Presented at the *GNB 2025 Conference*, Palermo, Italy.
+
+
+**2. Software Repository:**
+
+> Sbrollini, A., Gjika, M., Mortada, M. J., AlKalet, M., & Burattini, L. (2025). FetalBio-AI: Software for Fetal Biometry Estimation [Computer software]. Retrieved from https://github.com/BME-Jafar/FetalBio-AI
 
 <p align="right" style="margin-bottom:0;">
   <img src="./br3inlogo.png" alt="BR3iN Group Logo" width="120">
